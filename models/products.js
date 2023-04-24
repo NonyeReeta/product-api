@@ -24,7 +24,7 @@ const productModel = new Schema({
 		type: Number,
 		required: true,
 	},
-	statue: {
+	status: {
 		type: String,
 		required: true,
 	}

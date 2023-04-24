@@ -18,12 +18,13 @@ productRoute.get('/products', async (req, res) => {
 
 productRoute.post('/add-product', (req, res) => {
     const productDetails = req.body;
-    productModel.create({ productDetails })
+    const { name, sku, condition, cost, status } = productDetails;
+    productModel.create({ name, sku, condition, cost, status })
         .then(() => {
         return res.json({message: 'Product added'})
         })
         .catch((err) => {
-        res.status(500).send('error occured while adding the product')
+        res.status(500).send(err.message)
     })
 })
 
