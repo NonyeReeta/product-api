@@ -11,9 +11,11 @@ const app = express()
 const PORT = 3000
 
 // TO HANDLE CORS ERROR
-app.use(cors({
-    origin: 'http://localhost:4200'
-}))
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 //  CONNECTING TO DATABASE INSTANCE
 connectToDb()
