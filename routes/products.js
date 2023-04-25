@@ -28,4 +28,16 @@ productRoute.post('/add-product', (req, res) => {
     })
 })
 
+productRoute.put('/:sku/approve', (req, res) => {
+    const sku = req.params.sku;
+    productModel
+      .findOneAndUpdate({ sku: sku }, { status: "Approved" })
+      .then(() => {
+        res.status(200).send({ message: "successfully approved" });
+      })
+      .catch((err) => {
+        res.status(500).send(err.message);
+      });
+})
+
 module.exports = productRoute;
